@@ -41,7 +41,7 @@ doc = SimpleDocTemplate(
 story = [
     Paragraph("ABHIJEET KUMAR SINGH", title),
     Paragraph("Senior Java Backend Developer", role),
-    Paragraph("Noida, India &nbsp; | &nbsp; +91 7739839779 &nbsp; | &nbsp; abhijeetksinghdev@gmail.com &nbsp; | &nbsp; linkedin.com/in/abhijeetksinghdev &nbsp; | &nbsp; github.com/abhijeetksinghdev", contact),
+    Paragraph("Noida, India &nbsp; | &nbsp; +91-XXXXXXXXXX &nbsp; | &nbsp; your-email@gmail.com &nbsp; | &nbsp; linkedin.com/in/XXXX-XXXXX &nbsp; | &nbsp; github.com/XXXX-XXXX", contact),
     Spacer(1, 5),
     HRFlowable(width="100%", thickness=1, color=LINE),
     Paragraph("PROFILE", section),
