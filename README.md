@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 # portfolio-backend
 Spring Boot backend for my portfolio website, showcasing my projects, experience, and skills.
-=======
+
 # Abhijeet Kumar Singh — Portfolio
 
 A premium, dark-first portfolio built with Next.js (App Router), TypeScript, Tailwind CSS, and Framer Motion.
@@ -67,4 +66,3 @@ public/logos/     – Infosys & Rakuten Symphony logos
 
 - Update `profile.linkedinUrl` / `profile.githubUrl` in `lib/data.ts` if the real profile URLs differ from the handles on the resume.
 - Add certifications/achievements to `lib/data.ts` under a new array when available — the Education section is ready to extend.
->>>>>>> ad50d10 (Initial commit - portfolio)
