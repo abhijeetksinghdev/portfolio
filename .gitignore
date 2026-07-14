@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Compiled class file
 *.class
 
@@ -22,3 +23,24 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+=======
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+output/
+
+# env
+.env*
+
+# logs
+*.log
+
+# typescript
+*.tsbuildinfo
+
+# mac
+.DS_Store
+>>>>>>> ad50d10 (Initial commit - portfolio)
