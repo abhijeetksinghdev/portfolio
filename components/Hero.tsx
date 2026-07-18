@@ -32,7 +32,7 @@ export default function Hero() {
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan" />
               </span>
               <span className="font-mono text-[11px] uppercase tracking-wider text-indigo-300">
-                Building on the AO Portal, Income Tax Dept. (Govt. of India)
+                BUILDING BACKEND SYSTEMS FOR A GOVERNMENT-SCALE TAX PLATFORM
               </span>
             </motion.div>
 
@@ -113,7 +113,7 @@ export default function Hero() {
                 className="object-cover object-[center_20%]"
               />
             </div>
-            <p className="mt-4 font-display text-lg leading-tight text-offwhite">Senior Java Backend Developer</p>
+            <p className="mt-4 font-display text-lg leading-tight text-offwhite">Java Backend Engineer</p>
             <p className="mt-1 flex items-center gap-1.5 text-sm text-mist">
               <MapPinIcon className="h-4 w-4 text-cyan" />
               Noida, India <span aria-label="India" role="img">🇮🇳</span>

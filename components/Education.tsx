@@ -39,7 +39,6 @@ export default function Education() {
         </motion.div>
 
         <p className="mt-6 font-mono text-[11px] uppercase tracking-wider text-mist/70">
-          Certifications and awards — to be added.
         </p>
       </div>
     </section>

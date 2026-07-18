@@ -24,9 +24,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Abhijeet Kumar Singh — Senior Java Backend Developer",
+  title: "Abhijeet Kumar Singh — Java Backend Engineer",
   description:
-    "Java Backend Developer with 4.5+ years across telecom and tax-technology domains — Spring Boot, Kafka, Spark, IBM DB2, Kubernetes.",
+    "Java Backend Engineer with 4.5+ years across telecom and tax-technology domains — Spring Boot, Kafka, Spark, IBM DB2, Kubernetes.",
 };
 
 export default function RootLayout({

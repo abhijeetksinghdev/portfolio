@@ -16,7 +16,7 @@ export default function Projects() {
           className="mb-16 max-w-2xl"
         >
           <span className="font-mono text-xs uppercase tracking-wider text-indigo-400">
-            Featured Projects
+            FEATURED WORK
           </span>
           <h2 className="mt-3 font-display text-3xl leading-tight text-offwhite md:text-4xl">
             Systems that had to hold up.

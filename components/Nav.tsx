@@ -9,7 +9,7 @@ import { DownloadIcon } from "./icons";
 const sections = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
+  { id: "projects", label: "Featured Work" },
   { id: "skills", label: "Skills" },
   { id: "education", label: "Education" },
   { id: "how-i-work", label: "How I Work" },
@@ -73,10 +73,16 @@ export default function Nav() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <LanguageSwitcher />
           <ThemeToggle />
-          <a href="/resume/Abhijeet-Kumar-Singh-Resume.pdf" download aria-label="Download resume" title="Download resume" className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/60 hover:text-indigo-300">
+          <a
+  href="/resume/Abhijeet-Kumar-Singh-Resume.pdf"
+  download
+  aria-label="Download resume"
+  title="Download resume"
+  className="hidden sm:flex h-9 w-9 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/60 hover:text-indigo-300"
+>
             <DownloadIcon className="h-3.5 w-3.5" />
           </a>
           <button

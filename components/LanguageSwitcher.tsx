@@ -29,13 +29,22 @@ const LANGUAGE_COUNTRIES: Record<string, string> = {
   st: "LS", su: "ID", sv: "SE", sw: "TZ", ta: "IN", te: "IN", tg: "TJ",
   th: "TH", ti: "ER", tk: "TM", tl: "PH", tr: "TR", ts: "ZA", tt: "RU",
   ug: "CN", uk: "UA", ur: "PK", uz: "UZ", vi: "VN", xh: "ZA", yi: "IL",
-  yo: "NG", zh: "CN", zu: "ZA", en: "GB",
-  "zh-CN": "CN", "zh-TW": "TW",
+  yo: "NG", zh: "CN", zu: "ZA", en: "GB", "zh-CN": "CN", "zh-TW": "TW", 
+  ab: "GE", ace: "ID", ach: "UG", aa: "DJ", 
 };
 
 function flagForLanguage(languageCode: string) {
-  const country = LANGUAGE_COUNTRIES[languageCode] ?? LANGUAGE_COUNTRIES[languageCode.split("-")[0]] ?? "UN";
-  return String.fromCodePoint(...country.split("").map((letter) => 0x1f1e6 + letter.charCodeAt(0) - 65));
+  const country =
+    LANGUAGE_COUNTRIES[languageCode] ??
+    LANGUAGE_COUNTRIES[languageCode.split("-")[0]];
+
+  if (!country) return "🌐";
+
+  return String.fromCodePoint(
+    ...country.split("").map(
+      (letter) => 0x1f1e6 + letter.charCodeAt(0) - 65
+    )
+  );
 }
 
 export default function LanguageSwitcher() {
@@ -181,13 +190,35 @@ export default function LanguageSwitcher() {
           setOpen((isOpen) => !isOpen);
         }}
         aria-label="Translate page"
-        className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/50 hover:text-indigo-300"
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/50 hover:text-indigo-300"
       >
         <GlobeIcon className="h-4 w-4" />
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full z-50 mt-2 w-[min(19rem,calc(100vw-1.5rem))] overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface)] shadow-card">
+        <div
+  className="
+    absolute
+    right-0
+    top-full
+    z-[9999]
+    mt-2
+    w-80
+    max-w-[calc(100vw-2rem)]
+    rounded-xl
+    border
+    border-[var(--line)]
+    bg-[var(--surface)]
+    shadow-card
+
+    max-[400px]:fixed
+    max-[400px]:left-3
+    max-[400px]:right-3
+    max-[400px]:top-[4.5rem]
+    max-[400px]:w-auto
+    max-[400px]:mt-0
+  "
+>
           <div className="border-b border-[var(--line)] p-2">
             <input
               type="search"
@@ -195,21 +226,29 @@ export default function LanguageSwitcher() {
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search a language"
               autoFocus
-              className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-3 py-2 font-mono text-xs text-offwhite outline-none placeholder:text-mist focus:border-indigo-400"
+              className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-4 py-2.5 font-mono text-base sm:text-sm text-offwhite outline-none placeholder:text-mist focus:border-indigo-400"
             />
           </div>
-          <div className="max-h-72 overflow-y-auto p-1.5">
+          <div className="max-h-[60vh] overflow-y-auto p-1.5">
             {filteredLanguages.map((lang) => (
-              <button
-                key={lang.code}
-                type="button"
-                onClick={() => translate(lang.code)}
-                className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left font-mono text-[12px] text-mist transition-colors hover:bg-[var(--surface-2)] hover:text-offwhite"
-              >
-                {lang.label}
-                <span aria-hidden="true" className="ml-auto text-base leading-none">{flagForLanguage(lang.code)}</span>
-              </button>
-            ))}
+  <button
+    key={lang.code}
+    type="button"
+    onClick={() => translate(lang.code)}
+    className="flex w-full items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-[var(--surface-2)] hover:text-offwhite"
+  >
+    <span className="font-mono text-sm text-mist">
+      {lang.label}
+    </span>
+
+    <span
+      aria-hidden="true"
+      className="text-lg leading-none"
+    >
+      {flagForLanguage(lang.code)}
+    </span>
+  </button>
+))}
             {!filteredLanguages.length && (
               <p className="px-3 py-5 text-center font-mono text-xs text-mist">No matching language</p>
             )}
