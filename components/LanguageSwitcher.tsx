@@ -8,10 +8,11 @@ type Language = { code: string; label: string };
 const INITIAL_LANGUAGES: Language[] = [{ code: "en", label: "English" }];
 
 // Google Translate returns the language names and codes. This map only chooses
-// the flag to display beside each language; the UN flag is a graceful fallback
+// the flag to display beside each language; a globe is the graceful fallback
 // for languages without one home country.
 const LANGUAGE_COUNTRIES: Record<string, string> = {
-  af: "ZA", am: "ET", ar: "SA", ay: "BO", az: "AZ", be: "BY", bg: "BG",
+  aa: "DJ", ab: "GE", ace: "ID", ach: "UG", af: "ZA", am: "ET", ar: "SA",
+  ay: "BO", az: "AZ", be: "BY", bg: "BG",
   bm: "ML", bn: "BD", bho: "IN", bs: "BA", ca: "ES", ceb: "PH", co: "FR",
   cs: "CZ", cy: "GB", da: "DK", de: "DE", doi: "IN", dv: "MV", ee: "GH",
   el: "GR", eo: "UN", es: "ES", et: "EE", eu: "ES", fa: "IR", fi: "FI",
@@ -29,13 +30,21 @@ const LANGUAGE_COUNTRIES: Record<string, string> = {
   st: "LS", su: "ID", sv: "SE", sw: "TZ", ta: "IN", te: "IN", tg: "TJ",
   th: "TH", ti: "ER", tk: "TM", tl: "PH", tr: "TR", ts: "ZA", tt: "RU",
   ug: "CN", uk: "UA", ur: "PK", uz: "UZ", vi: "VN", xh: "ZA", yi: "IL",
-  yo: "NG", zh: "CN", zu: "ZA", en: "GB",
-  "zh-CN": "CN", "zh-TW": "TW",
+  yo: "NG", zh: "CN", zu: "ZA", en: "GB", "zh-CN": "CN", "zh-TW": "TW",
 };
 
 function flagForLanguage(languageCode: string) {
-  const country = LANGUAGE_COUNTRIES[languageCode] ?? LANGUAGE_COUNTRIES[languageCode.split("-")[0]] ?? "UN";
-  return String.fromCodePoint(...country.split("").map((letter) => 0x1f1e6 + letter.charCodeAt(0) - 65));
+  const country =
+    LANGUAGE_COUNTRIES[languageCode] ??
+    LANGUAGE_COUNTRIES[languageCode.split("-")[0]];
+
+  if (!country) return "🌐";
+
+  return String.fromCodePoint(
+    ...country.split("").map(
+      (letter) => 0x1f1e6 + letter.charCodeAt(0) - 65
+    )
+  );
 }
 
 export default function LanguageSwitcher() {
@@ -213,7 +222,7 @@ export default function LanguageSwitcher() {
               placeholder="Search a language"
               aria-label="Search languages"
               autoFocus
-              className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-3 py-2 font-mono text-xs text-offwhite outline-none placeholder:text-mist focus:border-indigo-400"
+              className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-4 py-2.5 font-mono text-base sm:text-sm text-offwhite outline-none placeholder:text-mist focus:border-indigo-400"
             />
           </div>
           <div className="max-h-[min(18rem,calc(100dvh-8.75rem))] overflow-y-auto p-1.5">
@@ -222,10 +231,12 @@ export default function LanguageSwitcher() {
                 key={lang.code}
                 type="button"
                 onClick={() => translate(lang.code)}
-                className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left font-mono text-[12px] text-mist transition-colors hover:bg-[var(--surface-2)] hover:text-offwhite"
+                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left transition-colors hover:bg-[var(--surface-2)] hover:text-offwhite"
               >
-                {lang.label}
-                <span aria-hidden="true" className="ml-auto text-base leading-none">{flagForLanguage(lang.code)}</span>
+                <span className="font-mono text-sm text-mist">{lang.label}</span>
+                <span aria-hidden="true" className="text-lg leading-none">
+                  {flagForLanguage(lang.code)}
+                </span>
               </button>
             ))}
             {!filteredLanguages.length && (

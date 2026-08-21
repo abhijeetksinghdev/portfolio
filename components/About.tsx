@@ -63,10 +63,10 @@ export default function About() {
             Red Hat OpenShift CI/CD keeping releases stable across every sprint.
           </p>
           <p>
-            Before that, at Rakuten Symphony, I owned the incident and alarm
-            module of a telecom performance-monitoring platform — the part of
-            the system that decides which network faults matter and how fast
-            operations teams find out about them.
+            Before that, at Rakuten Symphony, I owned backend development for
+            the incident and alarm module of a telecom performance-monitoring
+            platform — the part of the system responsible for detecting network
+            faults and helping operations teams respond faster.
           </p>
           <p>
             Across both, the throughline is the same: translate messy,

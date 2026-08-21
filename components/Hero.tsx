@@ -60,7 +60,7 @@ export default function Hero() {
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan" />
               </span>
               <span className="font-mono text-[11px] uppercase tracking-wider text-indigo-300">
-                Building on the AO Portal, Income Tax Dept. (Govt. of India)
+                BUILDING BACKEND SYSTEMS FOR A GOVERNMENT-SCALE TAX PLATFORM
               </span>
             </motion.div>
 

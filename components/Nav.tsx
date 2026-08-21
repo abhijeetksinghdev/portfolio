@@ -9,7 +9,7 @@ import { DownloadIcon } from "./icons";
 const sections = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
+  { id: "projects", label: "Featured Work" },
   { id: "skills", label: "Skills" },
   { id: "education", label: "Education" },
   { id: "how-i-work", label: "How I Work" },

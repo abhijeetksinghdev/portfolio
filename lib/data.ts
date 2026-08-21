@@ -24,7 +24,7 @@ export const profile = {
     " of experience designing and owning distributed, event-driven systems across telecom and government tax platforms. At Rakuten Symphony, built Java services and Kafka/Spark pipelines running on Kubernetes for real-time network performance monitoring and incident alerting. Currently at Infosys, developing Spring Boot and IBM DB2 backend modules for the Income Tax Department's AO Portal, with Red Hat OpenShift CI/CD and AI-assisted engineering tools.",
   heroTaglineBefore: "",
   heroTaglineAfter:
-    " turning high-volume, high-stakes data into dependable backend systems. National tax infrastructure by day, live telecom networks before that.",
+    " turning high-volume, high-stakes data into dependable backend systems. Government-scale tax infrastructure by day, live telecom networks before that.",
 };
 
 export const skillGroups = [
@@ -112,7 +112,7 @@ export const experience = [
   },
 ];
 
-// Featured projects are the two resume projects, reframed as outcome-driven cards.
+// Featured work comprises the two resume projects, reframed as outcome-driven cards.
 // No metrics or details beyond what the resume states are included.
 export const projects = [
   {
@@ -143,7 +143,7 @@ export const projects = [
     title: "Performance Monitor — Telecom OSS",
     org: "Rakuten Symphony India Pvt. Ltd.",
     summary:
-      "Owned the incident and alarm module of a real-time network performance monitoring platform, including configurable correlation rules to flag degraded devices.",
+      "Owned backend development for the incident and alarm module of a real-time network performance monitoring platform, including configurable correlation rules to flag degraded devices.",
     outcome:
       "Built the real-time alerting and notification service for network faults, including cell-down events, and published KPI-based incident alerts to Kafka for downstream monitoring and ticketing systems.",
     stack: ["Java", "Spring Boot", "Apache Spark", "Kafka", "MySQL", "Cassandra", "Kubernetes", "AWS (EC2, S3)"],
