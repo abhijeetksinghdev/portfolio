@@ -68,7 +68,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.05, ease: [0.2, 0.7, 0.2, 1] }}
-              className="max-w-full whitespace-nowrap font-name text-[clamp(1.35rem,6.4vw,3rem)] font-extrabold uppercase leading-[0.98] tracking-[-0.035em] text-offwhite lg:text-[2.625rem] xl:text-[3rem]"
+              className="max-w-full whitespace-nowrap font-name text-[clamp(1.5rem,7.2vw,3rem)] font-extrabold uppercase leading-[0.98] tracking-[-0.045em] text-offwhite lg:text-[2.625rem] lg:tracking-[-0.035em] xl:text-[3rem]"
             >
               {profile.name.split(" ")[0]} {profile.name.split(" ")[1]}{" "}
               <span className="text-gradient-signal">{profile.name.split(" ")[2]}</span>
