@@ -56,12 +56,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/aks-favicon-v2.ico", type: "image/x-icon", sizes: "32x32" },
-      { url: "/aks-favicon-v2.svg", type: "image/svg+xml", sizes: "any" },
+      { url: "/favicon-v3.ico", type: "image/x-icon", sizes: "32x32" },
+      { url: "/favicon-v3.svg", type: "image/svg+xml", sizes: "any" },
     ],
-    shortcut: [{ url: "/aks-favicon-v2.ico", type: "image/x-icon" }],
+    shortcut: [{ url: "/favicon-v3.ico", type: "image/x-icon" }],
     apple: [
-      { url: "/aks-apple-touch-v2.png", type: "image/png", sizes: "180x180" },
+      { url: "/apple-touch-icon-v3.png", type: "image/png", sizes: "180x180" },
     ],
   },
   openGraph: {
