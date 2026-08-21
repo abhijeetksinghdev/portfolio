@@ -30,7 +30,7 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"}
-      className="relative flex h-9 w-9 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/50 hover:text-indigo-300"
+      className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/50 hover:text-indigo-300"
     >
       <span className={`transition-all duration-300 ${mounted && isLight ? "scale-100 opacity-100" : "scale-0 opacity-0 absolute"}`}>
         <SunIcon className="h-4 w-4" />

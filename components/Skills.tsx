@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { skillGroups } from "@/lib/data";
 
-const accents = ["#6B7BFF", "#8B6BF5", "#22D3EE"];
+const accents = ["#6B7BFF", "#8B6BF5", "#6B7BFF"];
 
 export default function Skills() {
   return (
@@ -34,7 +34,7 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: (idx % 3) * 0.06 }}
-                className="relative rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6"
+                className="glass-panel relative rounded-2xl border border-[var(--line)] p-5 min-[360px]:p-6"
               >
                 <div
                   aria-hidden="true"

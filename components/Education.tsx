@@ -27,19 +27,17 @@ export default function Education() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col justify-between gap-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-7 sm:flex-row sm:items-center"
+          className="glass-panel flex flex-col justify-between gap-4 rounded-2xl border border-[var(--line)] p-5 min-[360px]:p-7 sm:flex-row sm:items-center"
         >
           <div>
             <h3 className="font-display text-lg text-offwhite">{education.degree}</h3>
             <p className="mt-1 text-sm text-mist">{education.school}</p>
+            <p className="mt-1 text-sm text-mist">{education.university}</p>
           </div>
           <span className="font-mono text-[11px] uppercase tracking-wider text-mist">
             {education.period}
           </span>
         </motion.div>
-
-        <p className="mt-6 font-mono text-[11px] uppercase tracking-wider text-mist/70">
-        </p>
       </div>
     </section>
   );

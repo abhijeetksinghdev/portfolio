@@ -49,60 +49,72 @@ export default function Experience() {
                   }`}
                 />
 
-                <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 transition-colors hover:border-indigo-400/25 md:p-8">
-                  <div className="flex flex-wrap items-start justify-between gap-4">
-                    <div className="flex items-center gap-4">
-                      <div
-                        className={`flex h-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[var(--line)] bg-white ${
-                          role.id === "infosys" ? "w-12" : "w-12 p-1.5"
-                        }`}
-                      >
+                <div
+                  className={`orbit-card ${
+                    role.current
+                      ? "orbit-card--cyan"
+                      : "orbit-card--violet"
+                  }`}
+                >
+                  <span
+                    aria-hidden="true"
+                    className="orbit-card__beam"
+                    style={{ animationDelay: `${idx * -2.1}s` }}
+                  />
+
+                  <div className="orbit-card__surface p-4 min-[360px]:p-6 md:p-8">
+                    <div className="flex flex-wrap items-start justify-between gap-4">
+                      <div className="flex w-full min-w-0 flex-col items-start gap-3 min-[360px]:w-auto min-[360px]:flex-row min-[360px]:items-center min-[360px]:gap-4">
+                        <div
+                          className={`flex h-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[var(--line)] bg-white ${
+                            role.id === "infosys" ? "w-12" : "w-12 p-1.5"
+                          }`}
+                        >
                         <Image
                           src={role.logo}
-                          alt={`${role.company} logo`}
-                          width={52}
-                          height={38}
+                          alt=""
+                          width={48}
+                          height={48}
                           className={
                             role.id === "infosys"
-                              ? "h-auto w-28 max-w-none object-contain"
-                              : "h-auto w-full object-contain"
+                              ? "h-full w-full scale-[1.35] object-contain"
+                              : "h-full w-full object-contain"
                           }
                         />
+                        </div>
+                        <div className="min-w-0">
+                          <h3 className="font-display text-xl text-offwhite">{role.title}</h3>
+                          <p className="text-sm text-mist">{role.company}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-display text-xl text-offwhite">{role.title}</h3>
-                        <p className="text-sm text-mist">
-                          {role.company} · {role.location}
-                        </p>
-                      </div>
-                    </div>
-                    <span className="font-mono text-[11px] uppercase tracking-wider text-mist">
-                      {role.period}
-                    </span>
-                  </div>
-
-                  <p className="mt-5 font-mono text-[11px] uppercase tracking-wider text-violet">
-                    {role.project}
-                  </p>
-
-                  <ul className="mt-4 space-y-2.5">
-                    {role.points.map((p) => (
-                      <li key={p} className="flex gap-3 text-[15px] leading-relaxed text-mist">
-                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-indigo-400" />
-                        <span>{p}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {role.stack.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full border border-[var(--line)] px-3 py-1 font-mono text-[11px] text-mist"
-                      >
-                        {t}
+                      <span className="font-mono text-[11px] uppercase tracking-wider text-mist">
+                        {role.period}
                       </span>
-                    ))}
+                    </div>
+
+                    <p className="mt-5 font-mono text-[11px] uppercase tracking-wider text-violet">
+                      {role.project}
+                    </p>
+
+                    <ul className="mt-4 space-y-2.5">
+                      {role.points.map((p) => (
+                        <li key={p} className="flex gap-3 text-[15px] leading-relaxed text-mist">
+                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-indigo-400" />
+                          <span>{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {role.stack.map((t) => (
+                        <span
+                          key={t}
+                          className="rounded-full border border-[var(--line)] px-3 py-1 font-mono text-[11px] text-mist"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </motion.article>

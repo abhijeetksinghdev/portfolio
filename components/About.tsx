@@ -55,16 +55,24 @@ export default function About() {
           className="space-y-6 font-body text-lg leading-relaxed text-mist md:text-xl"
         >
           <p>
-            I build backend systems for places where getting it wrong is expensive — a government-scale tax platform and a live telecom network. Right now that means REST APIs and Spring Boot services built with IBM DB2 and Kafka, supported by RedHat-based CI/CD workflows to deliver reliable releases for a national public-sector application.
+            I build backend systems for places where getting it wrong is
+            expensive — a national tax portal, a live telecom network. Right
+            now that means REST APIs and Spring Boot services running against
+            IBM DB2 for the Income Tax Department&apos;s AO Portal, with
+            Kafka producers publishing messages for downstream processing and
+            Red Hat OpenShift CI/CD keeping releases stable across every sprint.
           </p>
           <p>
-            Before that, at Rakuten Symphony, I owned backend development for the incident and alarm module of a telecom performance-monitoring platform — the part of the system responsible for detecting network faults and helping operations teams respond faster.
+            Before that, at Rakuten Symphony, I owned backend development for
+            the incident and alarm module of a telecom performance-monitoring
+            platform — the part of the system responsible for detecting network
+            faults and helping operations teams respond faster.
           </p>
           <p>
             Across both, the throughline is the same: translate messy,
             frequently-changing real-world rules into clean, well-tested
             backend logic, and use the AI tools in my stack — GitHub Copilot,
-            Claude Code — to move faster without cutting corners.
+            Claude Code — to accelerate delivery without compromising quality.
           </p>
         </motion.div>
       </div>

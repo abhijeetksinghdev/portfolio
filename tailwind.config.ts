@@ -27,6 +27,7 @@ const config: Config = {
         cyan: "#22D3EE",
       },
       fontFamily: {
+        name: ["var(--font-manrope)", "sans-serif"],
         display: ["var(--font-space-grotesk)", "sans-serif"],
         body: ["var(--font-inter)", "sans-serif"],
         mono: ["var(--font-jetbrains)", "monospace"],
