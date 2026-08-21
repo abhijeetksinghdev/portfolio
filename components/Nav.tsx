@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import LogoMark from "./LogoMark";
 import ThemeToggle from "./ThemeToggle";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -20,6 +20,7 @@ export default function Nav() {
   const [active, setActive] = useState<string>("about");
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -45,14 +46,27 @@ export default function Nav() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setMobileOpen(false);
+      mobileMenuButtonRef.current?.focus();
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [mobileOpen]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
         scrolled ? "bg-[var(--nav-bg)] backdrop-blur-md border-b border-[var(--line)]" : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
-        <a href="#top" className="flex" aria-label="Back to top">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-3 py-4 min-[360px]:px-6 md:px-10">
+        <a href="#top" className="flex h-10 w-10 items-center justify-center" aria-label="Back to top">
           <LogoMark className="h-8 w-8" />
         </a>
 
@@ -61,6 +75,7 @@ export default function Nav() {
             <li key={s.id}>
               <a
                 href={`#${s.id}`}
+                aria-current={active === s.id ? "location" : undefined}
                 className={`rounded-full px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wider transition-colors ${
                   active === s.id
                     ? "bg-[var(--surface-2)] text-offwhite"
@@ -73,18 +88,20 @@ export default function Nav() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <LanguageSwitcher />
           <ThemeToggle />
-          <a href="/resume/Abhijeet-Kumar-Singh-Resume.pdf" download aria-label="Download resume" title="Download resume" className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/60 hover:text-indigo-300">
+          <a href="/resume/Abhijeet-Kumar-Singh-Resume.pdf" download aria-label="Download resume" title="Download resume" className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/60 hover:text-indigo-300">
             <DownloadIcon className="h-3.5 w-3.5" />
           </a>
           <button
+            ref={mobileMenuButtonRef}
             type="button"
             onClick={() => setMobileOpen((isOpen) => !isOpen)}
             aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={mobileOpen}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/50 hover:text-indigo-300 xl:hidden"
+            aria-controls="mobile-navigation"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/50 hover:text-indigo-300 xl:hidden"
           >
             <span className="sr-only">Menu</span>
             <span className="relative block h-3.5 w-4" aria-hidden="true">
@@ -96,14 +113,15 @@ export default function Nav() {
         </div>
       </nav>
       {mobileOpen && (
-        <div className="border-t border-[var(--line)] bg-[var(--nav-bg)] px-6 py-4 backdrop-blur-md xl:hidden md:px-10">
+        <div id="mobile-navigation" className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-[var(--line)] bg-[var(--nav-bg)] px-3 py-4 backdrop-blur-md min-[360px]:px-6 xl:hidden md:px-10">
           <ul className="mx-auto grid max-w-6xl grid-cols-2 gap-2 sm:grid-cols-3">
             {sections.map((section) => (
               <li key={section.id}>
                 <a
                   href={`#${section.id}`}
+                  aria-current={active === section.id ? "location" : undefined}
                   onClick={() => setMobileOpen(false)}
-                  className={`block rounded-lg px-3 py-2.5 font-mono text-[11px] uppercase tracking-wider transition-colors ${
+                  className={`flex min-h-10 items-center rounded-lg px-3 py-2.5 font-mono text-[11px] uppercase tracking-wider transition-colors ${
                     active === section.id
                       ? "bg-[var(--surface-2)] text-offwhite"
                       : "text-mist hover:bg-[var(--surface-2)] hover:text-offwhite"
@@ -115,7 +133,7 @@ export default function Nav() {
             ))}
           </ul>
           <div className="mx-auto mt-3 flex max-w-6xl gap-2 border-t border-[var(--line)] pt-3">
-            <a href="/resume/Abhijeet-Kumar-Singh-Resume.pdf" target="_blank" rel="noreferrer" className="flex-1 rounded-lg border border-[var(--line)] px-3 py-2.5 text-center font-mono text-[11px] uppercase tracking-wider text-offwhite">
+            <a href="/resume/Abhijeet-Kumar-Singh-Resume.pdf" target="_blank" rel="noreferrer" className="flex min-h-10 flex-1 items-center justify-center rounded-lg border border-[var(--line)] px-3 py-2.5 text-center font-mono text-[11px] uppercase tracking-wider text-offwhite">
               Preview resume
             </a>
             <a href="/resume/Abhijeet-Kumar-Singh-Resume.pdf" download className="flex items-center justify-center rounded-lg border border-[var(--line)] px-3 text-mist" aria-label="Download resume">

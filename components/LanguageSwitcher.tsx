@@ -44,6 +44,7 @@ export default function LanguageSwitcher() {
   const [languages, setLanguages] = useState(INITIAL_LANGUAGES);
   const [query, setQuery] = useState("");
   const menuRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const filteredLanguages = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase();
     return normalizedQuery
@@ -152,6 +153,19 @@ export default function LanguageSwitcher() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key !== "Escape") return;
+      setOpen(false);
+      triggerRef.current?.focus();
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
+
   function translate(langCode: string) {
     if (langCode === "en") {
       // Google Translate does not include English in its generated list because
@@ -175,30 +189,34 @@ export default function LanguageSwitcher() {
   return (
     <div ref={menuRef} className="relative">
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => {
           setQuery("");
           setOpen((isOpen) => !isOpen);
         }}
         aria-label="Translate page"
-        className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/50 hover:text-indigo-300"
+        aria-expanded={open}
+        aria-controls="language-picker"
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/50 hover:text-indigo-300"
       >
         <GlobeIcon className="h-4 w-4" />
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full z-50 mt-2 w-[min(19rem,calc(100vw-1.5rem))] overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface)] shadow-card">
+        <div id="language-picker" role="dialog" aria-label="Choose a language" className="fixed left-3 right-3 top-[4.5rem] z-50 overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface)] shadow-card sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mt-2 sm:w-[min(19rem,calc(100vw-1.5rem))]">
           <div className="border-b border-[var(--line)] p-2">
             <input
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search a language"
+              aria-label="Search languages"
               autoFocus
               className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-3 py-2 font-mono text-xs text-offwhite outline-none placeholder:text-mist focus:border-indigo-400"
             />
           </div>
-          <div className="max-h-72 overflow-y-auto p-1.5">
+          <div className="max-h-[min(18rem,calc(100dvh-8.75rem))] overflow-y-auto p-1.5">
             {filteredLanguages.map((lang) => (
               <button
                 key={lang.code}

@@ -1,22 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getYearsOfExperience, formatYears } from "@/lib/experience";
+import { getExperienceLabel } from "@/lib/experience";
 
 export default function ExperienceYears({
   className,
-  suffix = " years",
+  suffix = "",
 }: {
   className?: string;
   suffix?: string;
 }) {
-  // Fallback matches the figure stated on the resume at time of writing;
-  // it's replaced the moment the browser can compute today's real value,
-  // so the number stays accurate no matter when the page is visited.
-  const [label, setLabel] = useState<string>("4.5+");
+  // Calculate immediately instead of rendering a stale hardcoded fallback.
+  const [label, setLabel] = useState(() => getExperienceLabel());
 
   useEffect(() => {
-    setLabel(formatYears(getYearsOfExperience()));
+    const refresh = () => setLabel(getExperienceLabel());
+    refresh();
+
+    // Keep long-running tabs accurate when the date changes.
+    const timer = window.setInterval(refresh, 24 * 60 * 60 * 1000);
+    return () => window.clearInterval(timer);
   }, []);
 
   return (

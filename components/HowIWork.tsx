@@ -22,7 +22,7 @@ export default function HowIWork() {
           </h2>
         </motion.div>
 
-        <div className="grid gap-px overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface-2)] sm:grid-cols-2">
+        <div className="grid gap-5 sm:grid-cols-2">
           {howIWork.map((item, idx) => (
             <motion.div
               key={item.title}
@@ -30,7 +30,7 @@ export default function HowIWork() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: idx * 0.06 }}
-              className="bg-[var(--surface)] p-8"
+              className="glass-panel rounded-2xl border border-[var(--line)] p-5 min-[360px]:p-6 sm:p-8"
             >
               <h3 className="font-display text-lg text-offwhite">{item.title}</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-mist">{item.body}</p>

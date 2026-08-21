@@ -59,8 +59,8 @@ export default function About() {
             expensive — a national tax portal, a live telecom network. Right
             now that means REST APIs and Spring Boot services running against
             IBM DB2 for the Income Tax Department&apos;s AO Portal, with
-            Kafka moving data reliably between modules and RedHat-based
-            CI/CD keeping releases stable across every sprint.
+            Kafka producers publishing messages for downstream processing and
+            Red Hat OpenShift CI/CD keeping releases stable across every sprint.
           </p>
           <p>
             Before that, at Rakuten Symphony, I owned the incident and alarm
@@ -72,7 +72,7 @@ export default function About() {
             Across both, the throughline is the same: translate messy,
             frequently-changing real-world rules into clean, well-tested
             backend logic, and use the AI tools in my stack — GitHub Copilot,
-            Claude Code — to move faster without cutting corners.
+            Claude Code — to accelerate delivery without compromising quality.
           </p>
         </motion.div>
       </div>
