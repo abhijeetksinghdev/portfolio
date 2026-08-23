@@ -6,6 +6,7 @@ import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-moti
 import ExperienceYears from "./ExperienceYears";
 import RotatingDesignation from "./RotatingDesignation";
 import { profile } from "@/lib/data";
+import { trackEvent } from "@/lib/analytics";
 import { LayersIcon, ServerIcon, DatabaseIcon, DownloadIcon, MapPinIcon, SparkleIcon } from "./icons";
 
 export default function Hero() {
@@ -102,6 +103,7 @@ export default function Hero() {
             >
           <a
             href="#contact"
+            onClick={() => trackEvent("contact_cta_click", { location: "hero" })}
             className="group inline-flex min-w-0 items-center justify-center gap-1 whitespace-nowrap rounded-full bg-gradient-to-r from-indigo-500 via-violet to-cyan px-1 py-2 font-mono text-[9px] font-bold uppercase tracking-[0.04em] text-[#0A0B0F] shadow-glow transition-transform hover:-translate-y-0.5 min-[360px]:gap-1.5 min-[360px]:px-2 min-[360px]:tracking-[0.06em] sm:gap-2 sm:px-5 sm:py-2.5 sm:text-[12px] sm:tracking-wider"
           >
             Let&apos;s talk
@@ -109,6 +111,7 @@ export default function Hero() {
           </a>
           <a
             href="#experience"
+            onClick={() => trackEvent("work_cta_click", { location: "hero" })}
             className="inline-flex min-w-0 items-center justify-center whitespace-nowrap rounded-full border border-[var(--line-strong)] px-1 py-2 font-mono text-[9px] font-bold uppercase tracking-[0.04em] text-offwhite transition-colors hover:border-indigo-400/50 hover:text-indigo-300 min-[360px]:px-2 min-[360px]:tracking-[0.06em] sm:gap-2 sm:px-5 sm:py-2.5 sm:text-[12px] sm:tracking-wider"
           >
             See the work
@@ -118,6 +121,7 @@ export default function Hero() {
               href="/resume/Abhijeet-Kumar-Singh-Resume.pdf"
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackEvent("resume_preview", { location: "hero" })}
               className="inline-flex min-w-0 flex-1 items-center justify-center whitespace-nowrap px-1 py-2 font-mono text-[9px] font-bold uppercase tracking-[0.02em] text-offwhite transition-colors hover:text-indigo-300 min-[360px]:px-2 min-[360px]:tracking-[0.04em] sm:flex-none sm:px-5 sm:py-2.5 sm:text-[12px] sm:tracking-wider"
             >
               Preview resume
@@ -125,6 +129,7 @@ export default function Hero() {
             <a
               href="/resume/Abhijeet-Kumar-Singh-Resume.pdf"
               download
+              onClick={() => trackEvent("resume_download", { location: "hero" })}
               aria-label="Download resume"
               title="Download resume"
               className="inline-flex shrink-0 items-center justify-center border-l border-[var(--line-strong)] px-1 text-offwhite transition-colors hover:bg-indigo-400/10 hover:text-indigo-300 min-[360px]:px-2 sm:px-3.5"

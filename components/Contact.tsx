@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { profile } from "@/lib/data";
+import { trackEvent } from "@/lib/analytics";
 import { CheckIcon, CopyIcon, GithubIcon, LinkedinIcon, MailIcon, PhoneIcon } from "./icons";
 
 const iconLinks = [
@@ -56,6 +57,7 @@ export default function Contact() {
     }
 
     setCopyStatus(copied ? "copied" : "error");
+    if (copied) trackEvent("email_copy", { location: "contact" });
     if (statusTimerRef.current) clearTimeout(statusTimerRef.current);
     statusTimerRef.current = setTimeout(() => setCopyStatus("idle"), 2200);
   };
@@ -107,6 +109,7 @@ export default function Contact() {
           <div className="group inline-flex max-w-full overflow-hidden rounded-full border border-[var(--line-strong)] shadow-glow transition-transform hover:-translate-y-0.5 hover:border-indigo-400/50">
             <a
               href={`mailto:${profile.email}`}
+              onClick={() => trackEvent("contact_link_click", { channel: "email", location: "primary_cta" })}
               className="inline-flex min-h-12 min-w-0 flex-1 items-center justify-center whitespace-nowrap bg-gradient-to-r from-indigo-500 via-violet to-cyan px-3 text-center font-mono text-[10px] font-bold normal-case tracking-wider text-[#0A0B0F] min-[360px]:px-5 min-[360px]:text-[11px] sm:px-7 sm:text-[13px]"
             >
               {profile.email}
@@ -153,6 +156,7 @@ export default function Contact() {
               href={href}
               aria-label={label}
               title={label}
+              onClick={() => trackEvent("contact_link_click", { channel: label.toLowerCase(), location: "contact_icons" })}
               {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="group flex h-11 w-11 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/50 hover:text-indigo-300"
             >

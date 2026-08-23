@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { projects } from "@/lib/data";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Projects() {
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
@@ -108,7 +109,14 @@ export default function Projects() {
                   <button
                     type="button"
                     onClick={() =>
-                      setExpandedProject((current) => (current === proj.id ? null : proj.id))
+                      setExpandedProject((current) => {
+                        const nextProject = current === proj.id ? null : proj.id;
+                        trackEvent("project_architecture_toggle", {
+                          project: proj.id,
+                          action: nextProject ? "open" : "close",
+                        });
+                        return nextProject;
+                      })
                     }
                     aria-expanded={expandedProject === proj.id}
                     aria-controls={`${proj.id}-architecture`}

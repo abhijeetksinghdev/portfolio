@@ -5,6 +5,7 @@ import LogoMark from "./LogoMark";
 import ThemeToggle from "./ThemeToggle";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { DownloadIcon } from "./icons";
+import { trackEvent } from "@/lib/analytics";
 
 const sections = [
   { id: "about", label: "About" },
@@ -66,7 +67,7 @@ export default function Nav() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-3 py-4 min-[360px]:px-6 md:px-10">
-        <a href="#top" className="flex h-10 w-10 items-center justify-center" aria-label="Back to top">
+        <a href="#top" onClick={() => trackEvent("navigation_click", { section: "top" })} className="flex h-10 w-10 items-center justify-center" aria-label="Back to top">
           <LogoMark className="h-8 w-8" />
         </a>
 
@@ -75,6 +76,7 @@ export default function Nav() {
             <li key={s.id}>
               <a
                 href={`#${s.id}`}
+                onClick={() => trackEvent("navigation_click", { section: s.id })}
                 aria-current={active === s.id ? "location" : undefined}
                 className={`rounded-full px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wider transition-colors ${
                   active === s.id
@@ -91,7 +93,7 @@ export default function Nav() {
         <div className="flex items-center gap-2 sm:gap-3">
           <LanguageSwitcher />
           <ThemeToggle />
-          <a href="/resume/Abhijeet-Kumar-Singh-Resume.pdf" download aria-label="Download resume" title="Download resume" className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/60 hover:text-indigo-300">
+          <a href="/resume/Abhijeet-Kumar-Singh-Resume.pdf" download onClick={() => trackEvent("resume_download", { location: "navigation" })} aria-label="Download resume" title="Download resume" className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/60 hover:text-indigo-300">
             <DownloadIcon className="h-3.5 w-3.5" />
           </a>
           <button
@@ -120,7 +122,10 @@ export default function Nav() {
                 <a
                   href={`#${section.id}`}
                   aria-current={active === section.id ? "location" : undefined}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => {
+                    setMobileOpen(false);
+                    trackEvent("navigation_click", { section: section.id });
+                  }}
                   className={`flex min-h-10 items-center rounded-lg px-3 py-2.5 font-mono text-[11px] uppercase tracking-wider transition-colors ${
                     active === section.id
                       ? "bg-[var(--surface-2)] text-offwhite"
@@ -133,10 +138,10 @@ export default function Nav() {
             ))}
           </ul>
           <div className="mx-auto mt-3 flex max-w-6xl gap-2 border-t border-[var(--line)] pt-3">
-            <a href="/resume/Abhijeet-Kumar-Singh-Resume.pdf" target="_blank" rel="noreferrer" className="flex min-h-10 flex-1 items-center justify-center rounded-lg border border-[var(--line)] px-3 py-2.5 text-center font-mono text-[11px] uppercase tracking-wider text-offwhite">
+            <a href="/resume/Abhijeet-Kumar-Singh-Resume.pdf" target="_blank" rel="noreferrer" onClick={() => trackEvent("resume_preview", { location: "mobile_navigation" })} className="flex min-h-10 flex-1 items-center justify-center rounded-lg border border-[var(--line)] px-3 py-2.5 text-center font-mono text-[11px] uppercase tracking-wider text-offwhite">
               Preview resume
             </a>
-            <a href="/resume/Abhijeet-Kumar-Singh-Resume.pdf" download className="flex items-center justify-center rounded-lg border border-[var(--line)] px-3 text-mist" aria-label="Download resume">
+            <a href="/resume/Abhijeet-Kumar-Singh-Resume.pdf" download onClick={() => trackEvent("resume_download", { location: "mobile_navigation" })} className="flex items-center justify-center rounded-lg border border-[var(--line)] px-3 text-mist" aria-label="Download resume">
               <DownloadIcon className="h-4 w-4" />
             </a>
           </div>
