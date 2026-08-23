@@ -33,22 +33,35 @@ export default function OpenGraphImage() {
         >
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-              <div
-                style={{
-                  width: 62,
-                  height: 62,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  border: "2px solid #6B7BFF",
-                  borderRadius: 16,
-                  color: "#8B9AFF",
-                  fontSize: 24,
-                  fontWeight: 800,
-                }}
-              >
-                AKS
-              </div>
+              <svg width="62" height="62" viewBox="0 0 40 40" fill="none">
+                <defs>
+                  <linearGradient id="ogLogoGradient" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#6B7BFF" />
+                    <stop offset="0.55" stopColor="#8B6BF5" />
+                    <stop offset="1" stopColor="#22D3EE" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M20 3 35 11.5v17L20 37 5 28.5v-17L20 3Z"
+                  stroke="url(#ogLogoGradient)"
+                  strokeWidth="1.6"
+                />
+                <path
+                  d="M13 27 20.5 12 28 27"
+                  stroke="url(#ogLogoGradient)"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M15.8 22 25.2 22"
+                  stroke="url(#ogLogoGradient)"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                />
+                <circle cx="13" cy="27" r="1.6" fill="#22D3EE" />
+                <circle cx="28" cy="27" r="1.6" fill="#6B7BFF" />
+              </svg>
               <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
                 <span style={{ color: "#22D3EE", fontSize: 18, fontWeight: 700, letterSpacing: "0.18em" }}>
                   JAVA BACKEND ENGINEER
