@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono, Manrope } from "next/font/google";
 import PortfolioBackground from "@/components/PortfolioBackground";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { profile } from "@/lib/data";
 import { getExperienceLabel } from "@/lib/experience";
 import "./globals.css";
@@ -142,6 +143,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body bg-graphite-950 text-offwhite antialiased">
+        <GoogleAnalytics />
         <a
           href="#main-content"
           className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-indigo-500 px-4 py-3 font-mono text-xs font-bold uppercase tracking-wider text-white shadow-card transition-transform focus:translate-y-0"
