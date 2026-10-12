@@ -29,7 +29,7 @@ export default function RotatingDesignation() {
   }, []);
 
   return (
-    <p className="min-h-7 font-name text-[0.95rem] font-extrabold text-indigo-400 sm:text-lg md:text-xl">
+    <p className="min-h-8 font-display text-lg font-semibold tracking-[-0.025em] text-offwhite sm:text-xl md:text-2xl">
       <span
         className={`inline-block transition-[opacity,transform] duration-[260ms] ease-out ${
           visible ? "translate-y-0 opacity-100" : "-translate-y-1.5 opacity-0"

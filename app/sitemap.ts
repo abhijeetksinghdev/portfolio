@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${siteUrl}/resume/Abhijeet-Kumar-Singh-Resume.pdf`,
+      url: `${siteUrl}/resume-preview`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.7,

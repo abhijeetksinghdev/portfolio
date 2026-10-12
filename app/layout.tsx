@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono, Manrope } from "next/font/google";
 import PortfolioBackground from "@/components/PortfolioBackground";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { profile } from "@/lib/data";
 import { getExperienceLabel } from "@/lib/experience";
 import "./globals.css";
@@ -36,10 +35,21 @@ const manrope = Manrope({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0a0b0a" },
+    { media: "(prefers-color-scheme: light)", color: "#eeece5" },
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(portfolioUrl),
   title: "Abhijeet Kumar Singh — Java Backend Engineer",
-  description: `Java Backend Engineer with ${getExperienceLabel()} of experience across telecom and tax-technology domains — Spring Boot, Kafka, Spark, IBM DB2, Kubernetes.`,
+  description: `Java Backend Engineer with ${getExperienceLabel()} of experience designing and modernizing distributed systems with Java 8-21, Spring Boot 2/3, Kafka, Spark, OpenShift, and Kubernetes.`,
   applicationName: "Abhijeet Kumar Singh Portfolio",
   authors: [{ name: "Abhijeet Kumar Singh", url: portfolioUrl }],
   creator: "Abhijeet Kumar Singh",
@@ -47,9 +57,14 @@ export const metadata: Metadata = {
     "Abhijeet Kumar Singh",
     "Java Backend Engineer",
     "Spring Boot",
+    "Spring Cloud",
     "Microservices",
     "Kafka",
+    "Apache Spark",
     "Kubernetes",
+    "Red Hat OpenShift",
+    "Grafana",
+    "Prometheus",
     "Backend Developer",
   ],
   alternates: {
@@ -57,12 +72,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon-v3.ico", type: "image/x-icon", sizes: "32x32" },
-      { url: "/favicon-v3.svg", type: "image/svg+xml", sizes: "any" },
+      { url: "/favicon-v5.svg", type: "image/svg+xml", sizes: "any" },
+      { url: "/favicon-v5-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-v5.ico", type: "image/x-icon", sizes: "any" },
     ],
-    shortcut: [{ url: "/favicon-v3.ico", type: "image/x-icon" }],
+    shortcut: [{ url: "/favicon-v5.ico", type: "image/x-icon" }],
     apple: [
-      { url: "/apple-touch-icon-v3.png", type: "image/png", sizes: "180x180" },
+      { url: "/apple-touch-icon-v5.png", type: "image/png", sizes: "180x180" },
     ],
   },
   openGraph: {
@@ -71,12 +87,12 @@ export const metadata: Metadata = {
     url: "/",
     siteName: "Abhijeet Kumar Singh Portfolio",
     title: "Abhijeet Kumar Singh — Java Backend Engineer",
-    description: "Java backend engineering across production GovTech and telecom systems.",
+    description: "Distributed backend engineering across government tax-processing and telecom service-assurance systems.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Abhijeet Kumar Singh — Java Backend Engineer",
-    description: "Java backend engineering across production GovTech and telecom systems.",
+    description: "Distributed backend engineering across government tax-processing and telecom service-assurance systems.",
   },
   robots: {
     index: true,
@@ -109,6 +125,7 @@ const personStructuredData = {
   knowsAbout: [
     "Java",
     "Spring Boot",
+    "Spring Cloud",
     "Microservices",
     "Apache Kafka",
     "Apache Spark",
@@ -116,6 +133,11 @@ const personStructuredData = {
     "IBM DB2",
     "Amazon EC2",
     "Amazon S3",
+    "Grafana",
+    "Kibana",
+    "Prometheus",
+    "JUnit",
+    "Mockito",
   ],
 };
 
@@ -143,7 +165,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body bg-graphite-950 text-offwhite antialiased">
-        <GoogleAnalytics />
+        <div id="google_translate_element" aria-hidden="true" className="fixed left-[-9999px] top-0 h-px w-px overflow-hidden" />
         <a
           href="#main-content"
           className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-indigo-500 px-4 py-3 font-mono text-xs font-bold uppercase tracking-wider text-white shadow-card transition-transform focus:translate-y-0"
