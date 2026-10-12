@@ -23,3 +23,6 @@ output/
 
 # local verification artifacts
 /tmp/
+
+# private working drafts and generated previews
+/Claude outputs/

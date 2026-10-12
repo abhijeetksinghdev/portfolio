@@ -2,167 +2,76 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { profile } from "@/lib/data";
-import { trackEvent } from "@/lib/analytics";
 import { CheckIcon, CopyIcon, GithubIcon, LinkedinIcon, MailIcon, PhoneIcon } from "./icons";
+import { profile } from "@/lib/data";
 
-const iconLinks = [
-  { label: "Email", href: `mailto:${profile.email}`, icon: MailIcon, external: false },
-  { label: "Phone", href: `tel:${profile.phone.replace(/\s+/g, "")}`, icon: PhoneIcon, external: false },
+const links = [
   { label: "LinkedIn", href: profile.linkedinUrl, icon: LinkedinIcon, external: true },
   { label: "GitHub", href: profile.githubUrl, icon: GithubIcon, external: true },
+  { label: "Phone", href: `tel:${profile.phone.replace(/\s+/g, "")}`, icon: PhoneIcon, external: false },
 ];
 
 export default function Contact() {
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
-  const statusTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => {
-    return () => {
-      if (statusTimerRef.current) clearTimeout(statusTimerRef.current);
-    };
-  }, []);
-
-  const fallbackCopyEmail = () => {
-    const textArea = document.createElement("textarea");
-    textArea.value = profile.email;
-    textArea.setAttribute("readonly", "");
-    textArea.style.position = "fixed";
-    textArea.style.opacity = "0";
-    document.body.appendChild(textArea);
-    textArea.select();
-    const copied = document.execCommand("copy");
-    textArea.remove();
-    return copied;
-  };
+  useEffect(() => () => { if (timerRef.current) clearTimeout(timerRef.current); }, []);
 
   const copyEmail = async () => {
     let copied = false;
-
     try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(profile.email);
-        copied = true;
-      }
+      await navigator.clipboard.writeText(profile.email);
+      copied = true;
     } catch {
-      copied = false;
+      const area = document.createElement("textarea");
+      area.value = profile.email;
+      area.style.position = "fixed";
+      area.style.opacity = "0";
+      document.body.appendChild(area);
+      area.select();
+      copied = document.execCommand("copy");
+      area.remove();
     }
-
-    if (!copied) {
-      try {
-        copied = fallbackCopyEmail();
-      } catch {
-        copied = false;
-      }
-    }
-
     setCopyStatus(copied ? "copied" : "error");
-    if (copied) trackEvent("email_copy", { location: "contact" });
-    if (statusTimerRef.current) clearTimeout(statusTimerRef.current);
-    statusTimerRef.current = setTimeout(() => setCopyStatus("idle"), 2200);
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setCopyStatus("idle"), 2200);
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden py-28 md:py-36">
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-fade)] via-transparent to-transparent" />
+    <section id="contact" className="relative overflow-hidden py-24 sm:py-28 lg:py-36">
+      <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-10">
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} className="frame-panel overflow-hidden">
+          <div className="grid lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)]">
+            <div className="p-6 sm:p-10 lg:p-14 xl:p-16">
+              <span className="eyebrow">06 / Start a conversation</span>
+              <h2 className="mt-9 max-w-5xl font-display text-[clamp(2.8rem,7.5vw,7.5rem)] font-semibold uppercase leading-[0.82] tracking-[-0.07em] text-offwhite">Let&apos;s build<br /><span className="text-gradient-signal">reliable systems.</span></h2>
+              <p className="mt-8 max-w-2xl text-[15px] leading-7 text-mist sm:text-lg sm:leading-8">Looking for Java backend opportunities where production ownership, distributed systems, and thoughtful engineering matter.</p>
+            </div>
 
-      <div className="relative mx-auto max-w-4xl px-6 text-center md:px-10">
-        <motion.span
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="font-mono text-xs uppercase tracking-wider text-indigo-400"
-        >
-          Contact
-        </motion.span>
+            <div className="border-t border-[var(--line)] bg-[var(--surface)]/80 p-6 sm:p-8 lg:flex lg:flex-col lg:justify-between lg:border-l lg:border-t-0 lg:p-10">
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-mist">Direct channel</p>
+                <div className="mt-5 grid grid-cols-[minmax(0,1fr)_3.25rem] border border-[var(--line-strong)]">
+                  <a href={`mailto:${profile.email}`} className="flex min-h-14 min-w-0 items-center gap-3 overflow-hidden px-3 text-indigo-400 transition-colors hover:bg-indigo-400/5 sm:px-4">
+                    <MailIcon className="h-4 w-4 shrink-0" />
+                    <span className="truncate font-mono text-[10px] font-medium sm:text-[11px]">{profile.email}</span>
+                  </a>
+                  <button type="button" onClick={copyEmail} aria-label={copyStatus === "copied" ? "Email copied" : "Copy email address"} className="flex items-center justify-center border-l border-[var(--line-strong)] text-cyan transition-colors hover:bg-cyan/10">
+                    {copyStatus === "copied" ? <CheckIcon className="h-4 w-4 text-emerald-400" /> : <CopyIcon className="h-4 w-4" />}
+                  </button>
+                </div>
+                <span className="sr-only" role="status" aria-live="polite">{copyStatus === "copied" ? "Email copied." : copyStatus === "error" ? "Copy failed." : ""}</span>
+              </div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mt-4 font-display text-4xl leading-tight text-offwhite md:text-5xl"
-        >
-          Ready to bring this backend
-          <br className="hidden sm:block" /> depth to your team.
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="mx-auto mt-5 max-w-xl text-lg text-mist"
-        >
-          Let&apos;s build backend systems where production ownership,
-          reliability, and thoughtful delivery matter.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-10 flex w-full items-center justify-center"
-        >
-          <div className="group inline-flex max-w-full overflow-hidden rounded-full border border-[var(--line-strong)] shadow-glow transition-transform hover:-translate-y-0.5 hover:border-indigo-400/50">
-            <a
-              href={`mailto:${profile.email}`}
-              onClick={() => trackEvent("contact_link_click", { channel: "email", location: "primary_cta" })}
-              className="inline-flex min-h-12 min-w-0 flex-1 items-center justify-center whitespace-nowrap bg-gradient-to-r from-indigo-500 via-violet to-cyan px-3 text-center font-mono text-[10px] font-bold normal-case tracking-wider text-[#0A0B0F] min-[360px]:px-5 min-[360px]:text-[11px] sm:px-7 sm:text-[13px]"
-            >
-              {profile.email}
-            </a>
-            <button
-              type="button"
-              onClick={copyEmail}
-              aria-label={
-                copyStatus === "copied"
-                  ? "Email copied"
-                  : copyStatus === "error"
-                    ? "Copy failed, try again"
-                    : "Copy email address"
-              }
-              title={copyStatus === "copied" ? "Copied" : copyStatus === "error" ? "Try copying again" : "Copy email"}
-              className="inline-flex min-h-12 min-w-12 shrink-0 items-center justify-center border-l border-[var(--line-strong)] bg-[var(--surface)] text-offwhite transition-colors hover:bg-indigo-400/10 hover:text-indigo-300 focus-visible:bg-indigo-400/10"
-            >
-              {copyStatus === "copied" ? (
-                <CheckIcon className="h-4 w-4 text-emerald-400" />
-              ) : (
-                <CopyIcon className="h-4 w-4 text-cyan" />
-              )}
-            </button>
+              <div className="mt-10 border-t border-[var(--line)]">
+                {links.map(({ label, href, icon: Icon, external }) => (
+                  <a key={label} href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="group flex min-h-14 items-center justify-between border-b border-[var(--line)] font-mono text-[10px] uppercase tracking-[0.16em] text-mist transition-colors hover:text-indigo-400">
+                    <span className="flex items-center gap-3"><Icon className="h-4 w-4" />{label}</span><span className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-          <span className="sr-only" aria-live="polite" role="status">
-            {copyStatus === "copied"
-              ? "Email address copied to clipboard."
-              : copyStatus === "error"
-                ? "Email address could not be copied."
-                : ""}
-          </span>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-3"
-        >
-          {iconLinks.map(({ label, href, icon: Icon, external }) => (
-            <a
-              key={label}
-              href={href}
-              aria-label={label}
-              title={label}
-              onClick={() => trackEvent("contact_link_click", { channel: label.toLowerCase(), location: "contact_icons" })}
-              {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="group flex h-11 w-11 items-center justify-center rounded-full border border-[var(--line)] text-mist transition-colors hover:border-indigo-400/50 hover:text-indigo-300"
-            >
-              <Icon className="h-[18px] w-[18px]" />
-            </a>
-          ))}
         </motion.div>
       </div>
     </section>

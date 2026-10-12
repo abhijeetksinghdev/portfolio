@@ -90,9 +90,9 @@ export default function SignalField({ density = 46 }: { density?: number }) {
 
       const ctx2 = ctx as CanvasRenderingContext2D;
       const isLight = document.documentElement.classList.contains("light");
-      const lineColor = isLight ? "67, 86, 180" : "89, 113, 218";
-      const nodeColor = isLight ? "79, 70, 229" : "139, 157, 255";
-      const pointerColor = isLight ? "79, 70, 229" : "56, 139, 253";
+      const lineColor = isLight ? "29, 95, 209" : "86, 124, 200";
+      const nodeColor = isLight ? "29, 88, 196" : "123, 168, 255";
+      const pointerColor = isLight ? "12, 132, 120" : "47, 212, 192";
       ctx2.clearRect(0, 0, width, height);
 
       if (pointer.active) {

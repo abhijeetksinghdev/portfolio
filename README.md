@@ -28,20 +28,6 @@ npm run build
 npm start
 ```
 
-## Analytics
-
-The portfolio supports consent-controlled Google Analytics 4. Copy
-`.env.example` to `.env.local`, replace the placeholder with the public GA4
-Measurement ID, and build the site again:
-
-```bash
-NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
-```
-
-Analytics loads only after the visitor selects **Allow**. Advertising signals
-are disabled. Tracked interactions include resume preview/download, contact and
-social links, navigation, and featured-project architecture toggles.
-
 ## Project structure
 
 ```

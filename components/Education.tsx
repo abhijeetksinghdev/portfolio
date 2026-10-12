@@ -5,40 +5,17 @@ import { education } from "@/lib/data";
 
 export default function Education() {
   return (
-    <section id="education" className="relative border-b border-[var(--line)] py-28 md:py-36">
-      <div className="mx-auto max-w-6xl px-6 md:px-10">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 max-w-2xl"
-        >
-          <span className="font-mono text-xs uppercase tracking-wider text-indigo-400">
-            Education
-          </span>
-          <h2 className="mt-3 font-display text-3xl leading-tight text-offwhite md:text-4xl">
-            Foundation.
-          </h2>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6 }}
-          className="glass-panel flex flex-col justify-between gap-4 rounded-2xl border border-[var(--line)] p-5 min-[360px]:p-7 sm:flex-row sm:items-center"
-        >
-          <div>
-            <h3 className="font-display text-lg text-offwhite">{education.degree}</h3>
-            <p className="mt-1 text-sm text-mist">{education.school}</p>
-            <p className="mt-1 text-sm text-mist">{education.university}</p>
-          </div>
-          <span className="font-mono text-[11px] uppercase tracking-wider text-mist">
-            {education.period}
-          </span>
-        </motion.div>
-      </div>
+    <section id="education" className="border-b border-[var(--line)]">
+      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mx-auto grid max-w-[90rem] lg:grid-cols-[12rem_minmax(0,1fr)_auto] lg:items-stretch">
+        <div className="border-b border-[var(--line)] px-4 py-6 sm:px-6 lg:border-b-0 lg:border-r lg:px-10">
+          <span className="eyebrow">Education</span>
+        </div>
+        <div className="px-4 py-7 sm:px-6 lg:px-8">
+          <h2 className="font-display text-xl font-semibold tracking-[-0.03em] text-offwhite sm:text-2xl">{education.degree}</h2>
+          <p className="mt-2 text-sm text-mist">{education.school} · {education.university}</p>
+        </div>
+        <div className="flex items-center border-t border-[var(--line)] px-4 py-5 font-mono text-[10px] uppercase tracking-[0.18em] text-cyan sm:px-6 lg:border-l lg:border-t-0 lg:px-10">{education.period}</div>
+      </motion.div>
     </section>
   );
 }

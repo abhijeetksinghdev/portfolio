@@ -13,35 +13,38 @@ export const profile = {
   githubUrl: "https://github.com/abhijeetksinghdev",
   designations: [
     "Java Backend Engineer",
-    "Spring Boot & Microservices Engineer",
+    "Java & Spring Boot Engineer",
     "Distributed Systems Engineer",
-    "Event-Driven Backend Engineer",
-    "Kafka & Kubernetes Engineer",
+    "Kafka & Event-Driven Engineer",
+    "Production Reliability Engineer",
   ],
   // Split around the years-of-experience figure so it can be rendered live via <ExperienceYears />.
   summaryBefore: "Java Backend Engineer with ",
   summaryAfter:
-    " of experience designing and owning distributed, event-driven systems across telecom and government tax platforms. At Rakuten Symphony, built Java services and Kafka/Spark pipelines running on Kubernetes for real-time network performance monitoring and incident alerting. Currently at Infosys, developing Spring Boot and IBM DB2 backend modules for the Income Tax Department's AO Portal, with Red Hat OpenShift CI/CD and AI-assisted engineering tools.",
+    " of experience designing and modernizing distributed backend systems across telecom and government platforms. Experienced in Java 8-21, Spring Boot 2/3, Kafka and Spark, event-driven microservices, REST APIs, database optimization, and production troubleshooting for high-volume systems.",
   heroTaglineBefore: "",
   heroTaglineAfter:
-    " turning high-volume, high-stakes data into dependable backend systems. Government-scale tax infrastructure by day, live telecom networks before that.",
+    " designing and modernizing high-volume distributed systems across government and telecom platforms.",
 };
 
 export const skillGroups = [
   {
     label: "Languages",
-    items: ["Java", "SQL"],
+    items: ["Java 8 / 11 / 17 / 21", "SQL"],
   },
   {
     label: "Backend & Architecture",
     items: [
-      "Spring Boot",
+      "Spring Boot 2 / 3",
       "Spring MVC",
+      "Spring Cloud",
       "Hibernate / JPA",
       "REST APIs",
       "Microservices",
       "Distributed Systems",
       "Event-Driven Architecture",
+      "High-Availability Design",
+      "Idempotency Patterns",
     ],
   },
   {
@@ -50,7 +53,7 @@ export const skillGroups = [
   },
   {
     label: "Messaging & Streaming",
-    items: ["Apache Kafka", "Apache Spark (Batch & Streaming)"],
+    items: ["Apache Kafka", "Apache Spark 3"],
   },
   {
     label: "Containers & Orchestration",
@@ -61,16 +64,12 @@ export const skillGroups = [
     items: ["AWS (EC2, S3)", "Red Hat OpenShift"],
   },
   {
-    label: "DevOps & CI/CD",
-    items: ["Red Hat CI/CD Pipelines", "Jenkins", "Artifactory", "Maven", "Git / GitHub"],
+    label: "DevOps & Observability",
+    items: ["Jenkins", "Maven", "SonarQube", "Artifactory", "Git / GitHub", "Grafana", "Kibana (ELK)", "Prometheus"],
   },
   {
-    label: "Testing & Quality",
-    items: ["JUnit", "Postman", "SonarQube"],
-  },
-  {
-    label: "Tools & Practices",
-    items: ["Jira", "Confluence", "GitHub Copilot", "Claude Code"],
+    label: "Testing & Engineering",
+    items: ["JUnit", "Mockito", "Root Cause Analysis (RCA)", "On-Call Incident Management"],
   },
 ];
 
@@ -81,15 +80,15 @@ export const experience = [
     title: "Senior Associate Consultant",
     period: "Nov 2025 – Present",
     current: true,
-    project: "TDS CPC – AO Portal, Income Tax Department (Govt. of India)",
-    stack: ["Java", "Spring Boot", "IBM DB2", "Kafka", "Red Hat OpenShift CI/CD"],
+    project: "Income Tax Department, Government of India · TDS-CPC · Noida, India",
+    stack: ["Java 21", "Spring Boot 3", "Apache Kafka", "IBM DB2", "JPA / Hibernate", "Red Hat OpenShift", "JUnit", "Mockito"],
     logo: "/logos/infosys-logo.webp",
     points: [
-      "Design and build REST APIs and Spring Boot services with JPA/Hibernate on IBM DB2, writing integrity-safe query logic for a national-scale taxpayer records system handling high-volume financial data.",
-      "Implement and maintain Apache Kafka producer logic in AO Portal services, publishing messages for asynchronous processing by downstream modules.",
-      "Translate frequently changing taxation rules and complex functional requirements into clean, maintainable backend logic, shipping production-ready features every sprint.",
-      "Own build and deployment of backend services through Red Hat OpenShift CI/CD pipelines, ensuring consistent, stable, and repeatable production releases for a compliance-critical government platform.",
-      "Maintain JUnit test coverage and lead structured peer code reviews with QA and DevOps teams; apply GitHub Copilot and Claude Code to accelerate delivery and improve code consistency.",
+      "Designed and developed 25+ Spring Boot REST APIs for TDS-CPC correction workflows, translating complex tax-processing requirements into modular backend services.",
+      "Designed event-driven workflows using Apache Kafka for asynchronous correction processing, decoupling user-facing APIs from downstream backend services.",
+      "Designed JPA/Hibernate domain models and optimized IBM DB2 query flows for correction-case lifecycles while maintaining relationships and data consistency with original orders.",
+      "Implemented TDS computation and regulatory business rules across multiple assessment years, backed by JUnit and Mockito regression coverage.",
+      "Deployed Java 21 and Spring Boot 3 microservices on Red Hat OpenShift through CI/CD pipelines and supported production troubleshooting and root cause analysis.",
     ],
   },
   {
@@ -98,16 +97,18 @@ export const experience = [
     title: "Software Engineer",
     period: "Oct 2021 – Oct 2025",
     current: false,
-    project: "Performance Monitor (Telecom OSS – Network Performance & Incident Management)",
-    stack: ["Java", "Spring Boot", "Apache Spark", "Kafka", "MySQL", "Cassandra", "Kubernetes", "AWS (EC2, S3)"],
+    project: "Telecom OSS – Service Assurance Platform · Bengaluru, India",
+    stack: ["Java 8 / 11 / 17 / 21", "Spring Boot 2 / 3", "Apache Kafka", "Apache Spark 3", "MySQL", "Cassandra", "Kubernetes", "AWS", "JUnit", "Mockito"],
     logo: "/logos/rakuten-symphony-logo.webp",
     points: [
-      "Owned the incident and alarm module of the Performance Monitor platform end-to-end, including real-time detection, correlation, and alerting for network faults and device degradation across a carrier-grade telecom network.",
-      "Built configurable correlation rules for a Performance Incident Management system that proactively flagged degraded network devices before they impacted customers.",
-      "Built a real-time alerting and notification service for network faults and alarms, including cell-down events, enabling operations teams to respond faster to service-impacting incidents.",
-      "Diagnosed and resolved production issues in the incident and alarm pipeline, improving the reliability, accuracy, and timeliness of alerts delivered across the platform.",
-      "Built Spark batch and streaming jobs to publish KPI-based incident alerts to Kafka for downstream monitoring, ticketing, and notification systems, and ran the service on Kubernetes-based infrastructure for scalable, resilient operation.",
-      "Used Amazon S3 for file and object storage in Amazon EC2-based application environments.",
+      "Built backend integrations supporting 200+ network devices across distributed, multivendor telecom environments.",
+      "Designed a configurable event-correlation engine for LTE, 5G, and multivendor EMS environments, transforming raw alarms and degradation events into actionable incident profiles.",
+      "Improved Apache Spark processing performance by 40% through code-level optimization and efficient data-distribution strategies.",
+      "Developed Kafka-based incident-processing workflows that improved system performance by 30%, consolidating redundant incidents from multiple network sources.",
+      "Built reliable Kafka event-processing workflows with at-least-once delivery, key-based partitioning, and idempotent handling of duplicate and replayed events.",
+      "Contributed to incident-management capabilities that reduced average service-restoration time by 20% while improving visibility into network health and performance.",
+      "Modernized services from Java 8 to Java 17/21 and Spring Boot 3 while maintaining 90%+ unit-test coverage; handled L3 troubleshooting using Grafana and Kibana.",
+      "Mentored and onboarded 2-3 engineering interns through architecture walkthroughs, code reviews, debugging sessions, and pull-request feedback.",
     ],
   },
 ];
@@ -117,22 +118,23 @@ export const experience = [
 export const projects = [
   {
     id: "ao-portal",
-    title: "AO Portal — TDS CPC",
+    title: "TDS-CPC Correction Workflows",
     org: "Income Tax Department, Govt. of India (via Infosys)",
     summary:
-      "Backend modules for a government-scale tax platform: REST APIs and Spring Boot services on IBM DB2, with Kafka producers publishing messages for asynchronous downstream processing.",
+      "Designed and developed 25+ Spring Boot 3 REST APIs for TDS-CPC correction workflows, with Kafka-based asynchronous processing and JPA/Hibernate models on IBM DB2.",
     outcome:
-      "Integrity-safe query logic for high-volume taxpayer and financial records, deployed through Red Hat OpenShift CI/CD for stable, repeatable production releases.",
-    stack: ["Java", "Spring Boot", "IBM DB2", "Kafka", "REST APIs", "Red Hat OpenShift CI/CD"],
+      "Modular Java 21 services with optimized DB2 query flows, regulatory business rules, JUnit/Mockito regression coverage, and production delivery through Red Hat OpenShift.",
+    stack: ["Java 21", "Spring Boot 3", "Apache Kafka", "IBM DB2", "JPA / Hibernate", "Red Hat OpenShift", "JUnit", "Mockito"],
     architecture: {
-      label: "Backend service landscape",
+      label: "Correction-processing flow",
       sequential: true,
       nodes: [
-        { label: "AO Portal", detail: "Tax workflows" },
-        { label: "REST APIs", detail: "Request boundary" },
-        { label: "Spring Boot", detail: "Business logic" },
-        { label: "IBM DB2", detail: "Financial records" },
-        { label: "Kafka", detail: "Message publishing" },
+        { label: "TDS-CPC", detail: "Correction workflows" },
+        { label: "REST APIs", detail: "25+ service endpoints" },
+        { label: "Spring Boot 3", detail: "Java 21 business rules" },
+        { label: "Apache Kafka", detail: "Asynchronous processing" },
+        { label: "IBM DB2", detail: "Optimized case lifecycles" },
+        { label: "OpenShift", detail: "CI/CD and production" },
       ],
     },
     logo: "/logos/infosys-logo.webp",
@@ -140,23 +142,23 @@ export const projects = [
   },
   {
     id: "performance-monitor",
-    title: "Performance Monitor — Telecom OSS",
+    title: "Telecom OSS — Service Assurance Platform",
     org: "Rakuten Symphony India Pvt. Ltd.",
     summary:
-      "Owned backend development for the incident and alarm module of a real-time network performance monitoring platform, including configurable correlation rules to flag degraded devices.",
+      "Built backend integrations for 200+ network devices and designed a configurable event-correlation engine spanning LTE, 5G, and multivendor EMS environments.",
     outcome:
-      "Built the real-time alerting and notification service for network faults, including cell-down events, and published KPI-based incident alerts to Kafka for downstream monitoring and ticketing systems.",
-    stack: ["Java", "Spring Boot", "Apache Spark", "Kafka", "MySQL", "Cassandra", "Kubernetes", "AWS (EC2, S3)"],
+      "Improved Spark processing by 40% and Kafka incident workflows by 30%, reduced average service-restoration time by 20%, and maintained 90%+ unit-test coverage during Java and Spring modernization.",
+    stack: ["Java 8-21", "Spring Boot 2 / 3", "Apache Kafka", "Apache Spark 3", "MySQL", "Cassandra", "Kubernetes", "AWS", "Grafana", "Kibana"],
     architecture: {
-      label: "KPI-to-alert flow",
+      label: "Service-assurance flow",
       sequential: true,
       nodes: [
-        { label: "Network KPIs", detail: "Live signals" },
-        { label: "Apache Spark", detail: "Stream processing" },
-        { label: "MySQL / Cassandra", detail: "Operational data" },
-        { label: "Incident Service", detail: "Correlation rules" },
-        { label: "Kafka", detail: "Alert publishing" },
-        { label: "Downstream", detail: "Monitor · Ticket · Notify" },
+        { label: "200+ Devices", detail: "Multivendor network events" },
+        { label: "Correlation Engine", detail: "LTE, 5G and EMS rules" },
+        { label: "Apache Spark 3", detail: "Optimized processing" },
+        { label: "Apache Kafka", detail: "Partitioned event workflows" },
+        { label: "Idempotent Services", detail: "Duplicate and replay handling" },
+        { label: "Grafana / Kibana", detail: "L3 troubleshooting" },
       ],
     },
     logo: "/logos/rakuten-symphony-logo.webp",
@@ -165,28 +167,57 @@ export const projects = [
 ];
 
 export const education = {
-  degree: "Bachelor of Engineering – Computer Science & Engineering",
+  degree: "Bachelor of Engineering (B.E.) in Computer Science & Engineering",
   school: "IES College of Technology, Bhopal, India",
   university: "Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV)",
   period: "2016 – 2020",
 };
 
+export const certifications = [
+  {
+    id: "claude-certified-developer",
+    title: "Claude Certified Developer — Foundations",
+    issuer: "Anthropic",
+    issued: "September 27, 2026",
+    expires: "September 27, 2027",
+    credentialId: "a9c8f622-9dbe-49d0-be5c-68b62efe8bff",
+    certificationNumber: null,
+    image: "/certificates/claude-certified-developer-foundations.png",
+    badgeImage: "/certificates/claude-certified-developer-badge.png",
+    badgeUrl: "https://www.credly.com/badges/a9c8f622-9dbe-49d0-be5c-68b62efe8bff/public_url",
+    verificationLabel: "Verify credential",
+  },
+  {
+    id: "github-copilot",
+    title: "GitHub Copilot Certified Professional (GH-300)",
+    issuer: "Microsoft · GitHub",
+    issued: "September 9, 2026",
+    expires: "September 10, 2028",
+    credentialId: "AE51D275447325C9",
+    certificationNumber: "2CFADE-94DA48",
+    image: "/certificates/github-copilot-certificate.png",
+    badgeImage: "/certificates/github-copilot-badge.png",
+    badgeUrl: "https://www.credly.com/org/github/badge/github-copilot",
+    verificationLabel: "Official badge details",
+  },
+];
+
 // "How I work" principles derived only from facts present in the resume.
 export const howIWork = [
   {
-    title: "Backend depth, not just backend duty",
-    body: "From telecom alarms to tax records, the work has always been the same core discipline: turning complex, high-volume, high-stakes data into reliable APIs and services that don't break under real load.",
+    title: "Modernize without destabilizing",
+    body: "Upgrade paths from Java 8 to Java 17/21 and Spring Boot 3 are handled with regression coverage and production reliability in mind, not as version changes in isolation.",
   },
   {
-    title: "Domain translation is part of the job",
-    body: "Frequently-changing taxation rules and configurable telecom correlation logic both demand the same skill — reading messy real-world requirements and shipping clean, maintainable backend logic from them.",
+    title: "Make event processing reliable",
+    body: "Kafka workflows are designed around at-least-once delivery, key-based partitioning, and idempotent handling so duplicate and replayed events do not corrupt downstream behavior.",
   },
   {
-    title: "AI-assisted, not AI-replaced",
-    body: "GitHub Copilot and Claude Code are part of the development workflow — used to accelerate delivery and improve code consistency without compromising engineering judgment or code quality.",
+    title: "Diagnose production, not symptoms",
+    body: "L3 troubleshooting, root cause analysis, Grafana, and Kibana are part of engineering ownership—from finding the failure mode to improving the service that caused it.",
   },
   {
-    title: "Stability is a feature",
-    body: "JUnit coverage, structured peer review, and close collaboration with QA and DevOps are treated as core engineering work — especially when the releases in question serve a government-scale application.",
+    title: "Raise the team around the system",
+    body: "Architecture walkthroughs, code reviews, debugging sessions, and pull-request feedback are used to onboard and mentor engineers while keeping delivery standards high.",
   },
 ];
