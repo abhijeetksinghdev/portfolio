@@ -37,16 +37,24 @@ export default function OpenGraphImage() {
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <span style={{ color: "#FF7A55", fontSize: 15, fontWeight: 800, letterSpacing: ".22em" }}>JAVA BACKEND ENGINEER · DISTRIBUTED SYSTEMS</span>
-          <div style={{ marginTop: 19, display: "flex", flexDirection: "column", fontWeight: 900, lineHeight: .82, letterSpacing: "-.06em" }}>
-            <span style={{ fontSize: 91, fontWeight: 900 }}>ABHIJEET</span>
-            <span style={{ marginTop: 19, color: "#B8FF54", fontSize: 86, fontWeight: 900 }}>KUMAR<span style={{ marginLeft: 19, color: "#FF8B60", fontWeight: 900 }}>SINGH</span></span>
+          <div style={{ marginTop: 19, display: "flex", flexDirection: "column", fontWeight: 900, lineHeight: .82, letterSpacing: "-.065em" }}>
+            <span style={{ fontSize: 104, fontWeight: 900 }}>ABHIJEET</span>
+            <div style={{ marginTop: 21, display: "flex", alignItems: "center", color: "#B8FF54", fontSize: 81, fontWeight: 900 }}>
+              <span>KUMAR</span>
+              <div style={{ position: "relative", display: "flex", width: 235, height: 67, marginLeft: 18 }}>
+                {[[-2, 0], [2, 0], [0, -2], [0, 2], [-2, -2], [2, -2], [-2, 2], [2, 2]].map(([x, y], index) => (
+                  <span key={index} style={{ position: "absolute", left: 3 + x, top: y, color: "#B8FF54", fontSize: 81, fontWeight: 900 }}>SINGH</span>
+                ))}
+                <span style={{ position: "absolute", left: 3, top: 0, color: "#080A08", fontSize: 81, fontWeight: 900 }}>SINGH</span>
+              </div>
+            </div>
           </div>
           <span style={{ marginTop: 31, maxWidth: 870, color: "#BEC1B7", fontSize: 23, lineHeight: 1.42 }}>Production-focused engineering across government and telecom platforms.</span>
         </div>
 
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 22, borderTop: "1px solid rgba(242,239,230,.18)" }}>
-          <div style={{ display: "flex", gap: 24, color: "#D0D2CB", fontSize: 12, fontWeight: 800, letterSpacing: ".11em" }}>
-            <span>JAVA 21</span><span>SPRING BOOT 3</span><span>KAFKA</span><span>OPENSHIFT</span><span>AWS</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, color: "#D0D2CB", fontSize: 13, fontWeight: 900, letterSpacing: ".055em" }}>
+            <span>JAVA</span><span style={{ color: "#B8FF54" }}>•</span><span>SPRING BOOT</span><span style={{ color: "#B8FF54" }}>•</span><span>MICROSERVICES</span><span style={{ color: "#B8FF54" }}>•</span><span>APACHE KAFKA</span><span style={{ color: "#B8FF54" }}>•</span><span>REST APIs</span>
           </div>
           <span style={{ color: "#777B72", fontSize: 13 }}>abhijeetksinghdev.netlify.app</span>
         </div>
