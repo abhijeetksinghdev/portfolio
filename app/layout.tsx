@@ -72,13 +72,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon-v5.svg", type: "image/svg+xml", sizes: "any" },
-      { url: "/favicon-v5-32.png", type: "image/png", sizes: "32x32" },
-      { url: "/favicon-v5.ico", type: "image/x-icon", sizes: "any" },
+      { url: "/favicon-v6.svg?brand=20261012", type: "image/svg+xml", sizes: "any" },
+      { url: "/favicon-v6-32.png?brand=20261012", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-v6.ico?brand=20261012", type: "image/x-icon", sizes: "any" },
     ],
-    shortcut: [{ url: "/favicon-v5.ico", type: "image/x-icon" }],
+    shortcut: [{ url: "/favicon-v6.ico?brand=20261012", type: "image/x-icon" }],
     apple: [
-      { url: "/apple-touch-icon-v5.png", type: "image/png", sizes: "180x180" },
+      { url: "/apple-touch-icon-v6.png?brand=20261012", type: "image/png", sizes: "180x180" },
     ],
   },
   openGraph: {
