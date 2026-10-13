@@ -22,8 +22,8 @@ export default function OpenGraphImage() {
               <circle cx="29" cy="29" r="2" fill="#B8FF54" />
             </svg>
             <div style={{ display: "flex", flexDirection: "column", paddingLeft: 16, borderLeft: "1px solid rgba(242,239,230,.2)" }}>
-              <span style={{ fontSize: 16, fontWeight: 700, letterSpacing: ".16em" }}>ABHIJEET K. SINGH</span>
-              <span style={{ marginTop: 5, color: "#9EA197", fontSize: 12, letterSpacing: ".18em" }}>BACKEND SYSTEMS ENGINEER</span>
+              <span style={{ fontSize: 16, fontWeight: 700, letterSpacing: ".13em" }}>ABHIJEET KUMAR SINGH</span>
+              <span style={{ marginTop: 5, color: "#9EA197", fontSize: 12, letterSpacing: ".18em" }}>JAVA BACKEND ENGINEER</span>
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 10, color: "#B8FF54", fontSize: 14, fontWeight: 700, letterSpacing: ".12em" }}>

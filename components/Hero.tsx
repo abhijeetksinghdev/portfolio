@@ -53,7 +53,7 @@ export default function Hero() {
                   <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-indigo-300">Current focus</p>
                   <p className="mt-1 font-display text-lg font-semibold text-white">TDS-CPC backend systems</p>
                 </div>
-                <span className="border border-white/25 bg-black/35 px-2 py-1 font-mono text-[9px] uppercase tracking-wider text-white backdrop-blur">Java / Spring Boot</span>
+                <span className="shrink-0 whitespace-nowrap border border-white/25 bg-black/35 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.08em] text-white backdrop-blur sm:text-[9px] sm:tracking-wider">Java / Spring Boot</span>
               </div>
             </div>
             <div className="grid grid-cols-2 border-x border-b border-[var(--line)] bg-[var(--surface)]">
